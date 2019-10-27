@@ -1,0 +1,82 @@
+
+;;;; Question 1
+;; Done in Main
+
+;;;; Question 2
+(defun Make-set (L)
+  (cond ((null L) L)
+        ((member (car L) (cdr L))
+         (Make-set (cdr L)))
+        (t (cons (car L) (Make-set (cdr L))))))
+
+		
+;;;; Question 3
+(defun Is-Set (L)
+	(if (equal  L (Make-set L))
+	(print T)
+	())
+)
+
+
+;;;; Question 4
+(defun my-len (x)  
+   (do ((n 0 (+ n 2))           
+        (fast x (cddr fast))    
+        (slow x (cdr slow)))    
+       (nil)
+     (when (endp fast) (return n))
+     (when (endp (cdr fast)) (return (+ n 1)))
+     (when (and (eq fast slow) (> n 0)) (return nil))))
+	 
+
+ ;;;; Question 5
+ (defun my-sum (L)
+   (if L
+      (+ (car L) (my-sum (cdr L))) 
+      0))
+	  
+
+;;;; Question 6
+(defun my-average (x)  
+   (/ (my-sum x) (* (my-len x) 1.0) )
+   )
+
+
+(defun max-sub-list (list &optional (acc '()) (max-len 0) (max-list '()))
+  (cond ((null list) max-list)
+        ((and (listp (car list))
+              (> (my-len (car list)) max-len))
+         (max-sub-list (cdr list) acc (my-len (car list)) (car list)))
+        (t (max-sub-list (cdr list) acc max-len max-list))))
+
+
+;;;; Question 8
+(defun mymember (atm lst)
+  (cond ((null lst) nil)
+   ((equal atm (car lst)) (car lst))
+   (t (mymember atm (cdr lst)))))
+
+   
+(defun Main ())
+(format t "(1 2 3 4 5) => ~d ~%" (mapcar (lambda (x) (if (numberp x)(* x 2))) '(1 2 3 4 5)))
+(format t "(1 2 n 4 5) => ~d ~%" (mapcar (lambda (x) (if (numberp x)(* x 2))) '(1 2 n 4 5)))
+(format t "Make-set '(a b b c a d e) => ~d ~%" (Make-set '(a b b c a d e)))
+(format t "Make-set '(a c a d e) => ~d ~%" (Make-set '(a c a d e)))
+(format t "Is-set '(a b b c a d e) => ~S " (Is-Set '(a b b c a d e)))
+(format t "Is-set '(a c a d e) => ~S ~%" (Is-Set '(a b c d e)))
+(format t "my-len '(a c a d e) => ~d ~%" (my-len '(a b c d e)))
+(format t "my-len '(1 2 3 4 5) => ~d ~%" (my-len '(1 2 3 4 5)))
+(format t "my-sum '(1 2 3 4 5) => ~d ~%" (my-sum '(1 2 3 4 5)))
+(format t "my-sum '(1 2 5 5 5) => ~d ~%" (my-sum '(1 2 5 5 5)))
+(format t "my-average '(1 2 3 4 5) => ~d ~%" (my-average '(1 2 3 4 5)))
+(format t "my-average '(1 2 5 5 5) => ~d ~%" (my-average '(1 2 5 5 5)))
+(format t "max-sub-list '(1 (1 2 3 4) (1 2 3)) => ~d ~%" (max-sub-list '(1 (1 2 3 4) (1 2 3))))
+(format t "max-sub-list '(1 (1 2 3 ) (1 2 4)) => ~d ~%" (max-sub-list '(1 (1 2 3 ) (1 2 4))))
+(format t "mymember 'D '(A B C D E F G) => ~d ~%" (mymember 'D '(A B C D E F G)))
+(format t "mymember 'A '(B C D E F G) => ~d ~%" (mymember 'A '( B C D E F G)))
+
+
+
+
+
+
