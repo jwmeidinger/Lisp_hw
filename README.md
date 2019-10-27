@@ -1,7 +1,7 @@
 # Lisp_hw
 LISP! is SUPER fun!!!!!
 View in raw it looks way better
-
+Use the online LISP IDE
 ;; ---------------------------------------------------------------------------------
 ;;
 ;; CS372 Comparative Programming Languages
