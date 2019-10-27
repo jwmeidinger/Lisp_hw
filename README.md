@@ -1,5 +1,5 @@
 # Lisp_hw
-LISP! is SUPER fun
+LISP! is SUPER fun View in raw it looks way better
 
 ;; ---------------------------------------------------------------------------------
 ;;
